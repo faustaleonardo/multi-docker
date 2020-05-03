@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker built -t faustaleonardo/multi-client -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true faustaleonardo/multi-client npm test
+
+after_success:
+  - docker build -t faustaleonardo/multi-client ./client
+  - docker build -t faustaleonardo/multi-server ./server
+  - docker build -t faustaleonardo/multi-worker ./worker
+  - docker build -t faustaleonardo/multi-nginx ./nginx
+  # login to docker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # push to docker hub
+  - docker push -t faustaleonardo/multi-client
+  - docker push -t faustaleonardo/multi-server
+  - docker push -t faustaleonardo/multi-worker
+  - docker push -t faustaleonardo/multi-nginx
