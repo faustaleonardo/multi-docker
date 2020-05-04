@@ -34,7 +34,7 @@
         }
       ],
       "memory": 128,
-      "links": ["server", "worker"]
+      "links": ["client", "server"]
     }
   ]
 }
