@@ -28,6 +28,3 @@
     }
   ]
 }
-
-// Amazon RDS
-// username: postgres, password: postgrespassword, dbName: fibvalues
