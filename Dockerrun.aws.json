@@ -1,0 +1,33 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "client",
+      "image": "faustaleonardo/multi-client",
+      "hostname": "client",
+      "essential": false
+    },
+    {
+      "name": "server",
+      "image": "faustaleonardo/multi-server",
+      "hostname": "api",
+      "essential": false
+    },
+    {
+      "name": "worker",
+      "image": "faustaleonardo/multi-worker",
+      "hostname": "worker",
+      "essential": false
+    },
+    {
+      "name": "nginx",
+      "image": "faustaleonardo/multi-nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "links": ["server", "worker"]
+    }
+  ]
+}
+
+// Amazon RDS
+// username: postgres, password: postgrespassword, dbName: fibvalues
