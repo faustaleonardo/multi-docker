@@ -16,10 +16,10 @@ after_success:
   # login to docker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # push to docker hub
-  - docker push -t faustaleonardo/multi-client
-  - docker push -t faustaleonardo/multi-server
-  - docker push -t faustaleonardo/multi-worker
-  - docker push -t faustaleonardo/multi-nginx
+  - docker push faustaleonardo/multi-client
+  - docker push faustaleonardo/multi-server
+  - docker push faustaleonardo/multi-worker
+  - docker push faustaleonardo/multi-nginx
 
 deploy:
   edge: true
